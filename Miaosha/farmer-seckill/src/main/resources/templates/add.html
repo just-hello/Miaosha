@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="${rc.contextPath}/static/css/easyui.css">
+    <link rel="stylesheet" type="text/css" href="${rc.contextPath}/static/css/common.css">
+    <script type="text/javascript" src="${rc.contextPath}/static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="${rc.contextPath}/static/js/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="${rc.contextPath}/static/js/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="${rc.contextPath}/static/js/common.js"></script>
+    <style>
+        dl{
+            height:50px;
+            margin-top:10px;
+        }
+    </style>
+</head>
+<body>
+<div style="width: 50%;margin:0 auto;" >
+    <form id="form" method="post">
+        <dl>
+            <dd>
+                商品名称：<input class="easyui-textbox"  type="text" name="goodsName">
+            </dd>
+        </dl>
+        <dl>
+            <dd>
+                商品价格：<input class="easyui-numberbox" data-options="{prompt:'单位元精确到分，如12.00'}" name="goodsPrice">
+            </dd>
+        </dl>
+        <dl>
+            <dd>
+                商品数量： <input class="easyui-numberbox" type="text" name="goodsCount">
+            </dd>
+        </dl>
+        <dl>
+            <dd>
+                秒杀开始时间：  <input class="easyui-datetimebox" data-options="{editable:false,}"  name="startTime">
+            </dd>
+        </dl>
+        <dl>
+            <dd>
+                秒杀结束时间： <input class="easyui-datetimebox"  data-options="{editable:false}" name="endTime">
+            </dd>
+        </dl>
+    </form>
+</div>
+
+<script>
+    top.subPage.save = function(){
+        $('#form').form('submit',{
+            url:'${rc.contextPath}/goods/add',
+            success:function(data){
+                top.closeWindow()
+            },
+            error:function(){
+            }
+        })
+    }
+</script>
+</body>
+</html>

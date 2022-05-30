@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/goodsdetail.css">
+</head>
+<body>
+<div style="padding:5px;" id="list">
+    <h2 align="center">秒杀商品详情</h2>
+</div>
+<dl>
+    <dt>小熊(bear)森系4.5L加湿器 10121C45S9001</dt>
+    <dd>
+        <span>倒计时:</span>
+        <span id="time" class="time-cont">0天 00:23:33</span>
+        <br>
+        <button onclick="doBuy()">立即抢购</button>
+    </dd>
+</dl>
+
+<div class="msg-cover">
+    <div class="msg-body">
+        <div class="msg-tip">提示</div>
+        <div class="msg-msg">订单支付成功，等待发货...</div>
+        <div class="msg-op">
+            <div onclick="msgClick(true)">确定</div>
+            <div onclick="msgClick(false)">取消</div>
+        </div>
+    </div>
+</div>
+<script src="js/goodsdetail.min.js"></script>
+</body>
+</html>

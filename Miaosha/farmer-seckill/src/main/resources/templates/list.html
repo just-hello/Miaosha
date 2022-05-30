@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="${rc.contextPath}/static/css/easyui.css">
+    <link rel="stylesheet" type="text/css" href="${rc.contextPath}/static/css/common.css">
+    <script type="text/javascript" src="${rc.contextPath}/static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="${rc.contextPath}/static/js/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="${rc.contextPath}/static/js/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="${rc.contextPath}/static/js/common.js"></script>
+</head>
+<body>
+<div style="height:500px;">
+    <table id="dg"></table>
+    <div id="tb" style="padding:5px;">
+        <button class="easyui-linkbutton" style="width: 80px;" onclick="obj.addPage()">添加</button>
+    </div>
+</div>
+
+<div id="dialogWindow" data-options="border:'thin',collapsible:false,minimizable: false,shadow:false">
+    <div class="easyui-layout" data-options="fit:true,border:false">
+        <div data-options="region:'center',border:false" style="padding:0px;">
+            <iframe src="" class="easyui-panel" data-options="fit:true,border:false" frameborder="0"></iframe>
+        </div>
+        <div id="save" data-options="region:'south',border:false" style="text-align:right;padding:12px 12px;border-top:0px solid #ddd;">
+            <a class="easyui-linkbutton color1" href="javascript:void(0)" onclick="javascript:subPage.save();" style="width:80px">保存</a>
+            <a class="easyui-linkbutton color2" href="javascript:void(0)" onclick="javascript:closeWindow()" style="width:80px">取消</a>
+        </div>
+    </div>
+</div>
+
+<div id="popupWindow" data-options="width:500,height:300,border:'thin',cls:'c9',collapsible:false,shadow:false,minimizable: false,maximizable: false" style="display: none;">
+    <iframe src="" class="easyui-panel" data-options="fit:true, border:false" frameborder="0"></iframe>
+</div>
+<script>
+    var datagrid = $("#dg");
+    var dgOptions = {
+        rownumbers:true,
+        fit:true,
+        border:false,
+        striped:true,
+        url:'${rc.contextPath}/goods/listData',
+        method:'post',
+        toolbar:'#tb',
+        pageSize: 20,
+        pagination:true,
+        multiSort:true,
+        singleSelect:true,
+        columns: [[
+            {field:'goodsName', title:'商品名称', width:100}
+            ,{field:'goodsPrice', title: '商品价格', width:100}
+            ,{field:'goodsCount',title: '商品数量', width:80}
+            ,{field:'totalCount', title: '商品重量', width:80}
+            ,{field:'startTime', title: '开始时间', width:120}
+            ,{field:'endTime', title: '结束时间', width:120}
+            ,{field:'createUser', title: '创建人', width:80}
+            ,{field:'createTime', title: '创建时间', width:120}
+            ,{field:'updateUser', title: '修改人', width:80}
+            ,{field:'updateTime', title: '修改时间', width:120}
+        ]]
+    };
+    $(function() {
+        datagrid.datagrid(dgOptions);
+    });
+
+    var obj = (function(){
+        return {
+            addPage:function(){
+                top.openWindow("添加商品","${rc.contextPath}/goods/addPage",{})
+            }
+        }
+    })()
+</script>
+</body>
+</html>

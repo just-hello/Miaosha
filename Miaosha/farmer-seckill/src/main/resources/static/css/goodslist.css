@@ -1,0 +1,50 @@
+html{
+    font-size: 12px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+*{
+    margin:0;
+    padding:0;
+}
+h2{
+    font-size: 20px;
+}
+dl{
+    background: #fff;
+    height:100px;
+    border-radius: 10px;
+    margin:10px auto;
+    line-height: 50px;
+}
+dt{
+    font-weight: 700;
+    font-size: 16px;
+    padding:0 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border-bottom: 0.5px solid #ddd;
+}
+dd{
+    position: relative;
+    padding-left:10px;
+}
+dd span{
+    font-size: 14px;
+    font-weight: 700;
+}
+.time-cont{
+    color: red;
+    letter-spacing: 2px;
+}
+button{
+    float: right;
+    margin-right: 10px;
+    margin-top:15px;
+    color: #ffffff;
+    border:0;
+    outline: 0;
+    background: red;
+    padding:3px 10px;
+    border-radius: 15px;
+}

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <!--引入外部properties配置-->
+    <!--<properties resource="test.properties"/>-->
+    <context id="sqlTables" targetRuntime="MyBatis3">
+        <property name="autoDelimitKeywords" value="true"/>
+        <property name="beginningDelimiter" value="`" />
+        <property name="endingDelimiter" value="`" />
+        <!-- 生成的pojo，将implements Serializable-->
+        <plugin type="com.farmer.mybatis.plugins.BaseClassPlugin" >
+            <property name="useBaseEntity" value="true"/>
+            <property name="useBaseMapper" value="true"/>
+        </plugin>
+        <commentGenerator>
+            <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+            <property name="suppressAllComments" value="true" />
+        </commentGenerator>
+
+        <!-- 数据库链接URL、用户名、密码 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/seckill"
+                        userId="root"
+                        password="123456">
+        </jdbcConnection>
+
+        <!--
+        默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer
+            true，把JDBC DECIMAL 和 NUMERIC 类型解析为java.math.BigDecimal
+        -->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="true" />
+        </javaTypeResolver>
+
+        <!--
+        生成model模型，对应的包路径，以及文件存放路径(targetProject)，targetProject可以指定具体的路径,如./src/main/java，
+        也可以使用“MAVEN”来自动生成，这样生成的代码会在target/generatord-source目录下
+        -->
+        <!--<javaModelGenerator targetPackage="com.joey.mybaties.test.pojo" targetProject="MAVEN">-->
+        <javaModelGenerator targetPackage="com.farmer.seckill.entity" targetProject="D:/workspace/farmer-seckill/src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <!-- 从数据库返回的值被清理前后的空格  -->
+            <!--<property name="trimStrings" value="true" />-->
+        </javaModelGenerator>
+
+        <!--对应的mapper.xml文件  -->
+        <sqlMapGenerator targetPackage="mappers" targetProject="D:/workspace/farmer-seckill/src/main/resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <!-- 对应的Mapper接口类文件ANNOTATEDMAPPER-全注解，XMLMAPPER-全xml，MIXEDMAPPER:XML-混合 -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.farmer.seckill.mapper" targetProject="D:/workspace/farmer-seckill/src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+
+        <!--<table tableName="goods" domainObjectName="Goods" >
+            <property name="useActualColumnNames" value="false"/>
+        </table>-->
+        <table tableName="secorder" domainObjectName="SecOrder" >
+            <property name="useActualColumnNames" value="false"/>
+        </table>
+    </context>
+</generatorConfiguration>
